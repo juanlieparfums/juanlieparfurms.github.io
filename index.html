@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JUANLIÉ | Parfums d’Exception. Perfumes, ropa y estilo.">
+  <title>JUANLIÉ | Parfums d’Exception</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Georgia,"Times New Roman",serif;background:#050505;color:#f4ead7;line-height:1.6}
+    body.lock{overflow:hidden}
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:radial-gradient(circle at 50% 35%,#211b11 0,#0b0a08 34%,#050505 72%)}
+    .hero-inner{max-width:900px}.logo{width:min(430px,82vw);max-height:520px;object-fit:contain;margin-bottom:18px}
+    .eyebrow,.section-title{letter-spacing:5px;color:#c9a45a;text-transform:uppercase}
+    .eyebrow{font-size:12px;margin-bottom:20px}.tagline{font-size:clamp(20px,3vw,30px);margin:20px auto;max-width:760px}
+    .intro{font-family:Arial,sans-serif;color:#c8c0b2;max-width:680px;margin:auto;font-size:17px}
+    .btn{display:inline-block;margin-top:30px;padding:14px 28px;border:1px solid #c9a45a;color:#e6c77f;background:transparent;text-decoration:none;text-transform:uppercase;letter-spacing:2px;font:12px Arial,sans-serif;cursor:pointer;transition:.25s}
+    .btn:hover{background:#c9a45a;color:#050505}
+    section{padding:80px 20px;max-width:1100px;margin:auto}.section-title{text-align:center;font-size:15px;margin-bottom:18px}
+    .section-sub{text-align:center;color:#aaa;font:16px Arial,sans-serif;max-width:680px;margin:0 auto 40px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{border:1px solid #29251f;background:linear-gradient(145deg,#11100e,#080807);padding:38px 25px;text-align:center}
+    .icon{font-size:35px;margin-bottom:15px}.card h3{color:#e0c17a;letter-spacing:2px;margin-bottom:10px;font-weight:400}.card p{font:15px Arial,sans-serif;color:#aaa}
+    .quote{border-top:1px solid #332c21;border-bottom:1px solid #332c21;text-align:center;padding:70px 20px;margin:20px auto;max-width:850px;font-size:clamp(25px,4vw,42px);font-style:italic;color:#ead9b5}
+    .shop{background:#080705;max-width:none}.shop-inner{max-width:1100px;margin:auto}
+    .products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .product{border:1px solid #29251f;background:#0d0c0a;overflow:hidden}
+    .product-img{height:220px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,#262015,#0a0907);font-size:70px}
+    .product-info{padding:22px}.product-info h3{color:#e0c17a;font-weight:400;letter-spacing:2px}.product-info p{color:#999;font:14px Arial,sans-serif;margin:8px 0 15px}
+    .price{font:700 18px Arial,sans-serif;color:#f0d28c}.product .btn{margin-top:15px;width:100%}
+    .payment-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.payment{border:1px solid #29251f;padding:24px;text-align:center;background:#0c0b09}.payment strong{display:block;color:#e0c17a;margin-bottom:6px}.payment span{font:13px Arial,sans-serif;color:#999}
+    .contact{background:#090806;text-align:center}.contact p{font:16px Arial,sans-serif;color:#bbb;margin:10px}
+    footer{text-align:center;border-top:1px solid #211e19;padding:35px 20px;color:#7e7568;font:13px Arial,sans-serif}
+    #cartButton{position:fixed;right:20px;top:20px;z-index:20;border:1px solid #c9a45a;background:#0b0a08;color:#e6c77f;padding:12px 16px;cursor:pointer;font:13px Arial,sans-serif}
+    #cartCount{display:inline-block;background:#c9a45a;color:#050505;border-radius:50%;min-width:21px;padding:2px 5px;margin-left:5px}
+    #helpButton{position:fixed;right:20px;bottom:20px;z-index:20;width:58px;height:58px;border-radius:50%;border:1px solid #c9a45a;background:#c9a45a;color:#050505;font-size:25px;cursor:pointer;box-shadow:0 5px 25px #000}
+    .overlay{display:none;position:fixed;inset:0;background:#000b;z-index:30}.overlay.open{display:block}
+    .panel{position:absolute;right:0;top:0;height:100%;width:min(430px,94vw);background:#0b0a08;border-left:1px solid #332c21;padding:28px;overflow:auto}
+    .panel h2{color:#e0c17a;font-weight:400;letter-spacing:3px}.close{float:right;background:none;border:0;color:#aaa;font-size:28px;cursor:pointer}
+    .cart-item{border-bottom:1px solid #29251f;padding:18px 0}.cart-item strong{color:#e0c17a}.cart-controls{display:flex;align-items:center;gap:10px;margin-top:8px}.small{background:#17140f;border:1px solid #332c21;color:#e6c77f;padding:4px 9px;cursor:pointer}
+    .total{font:700 20px Arial,sans-serif;color:#f0d28c;margin:25px 0}.empty{color:#999;font:14px Arial,sans-serif;margin-top:30px}
+    .help-links a{display:block;color:#e0c17a;text-decoration:none;border:1px solid #29251f;padding:15px;margin-top:12px;font-family:Arial,sans-serif}
+    @media(max-width:800px){.products,.cards{grid-template-columns:1fr 1fr}.payment-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){.products,.cards,.payment-grid{grid-template-columns:1fr}.hero{min-height:92vh}.logo{max-height:360px}}
+  </style>
+</head>
+<body>
+
+  <button id="cartButton" onclick="openPanel('cartPanel')">🛒 Carrito <span id="cartCount">0</span></button>
+  <button id="helpButton" onclick="openPanel('helpPanel')" aria-label="Ayuda">?</button>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <img class="logo" src="logo.png" alt="JUANLIÉ | Parfums d’Exception">
+      <div class="eyebrow">Luxury • Power • Essence</div>
+      <div class="tagline">No vendemos simplemente perfumes. Creamos una esencia que habla de ti antes de que digas una palabra.</div>
+      <p class="intro">Fragancias seleccionadas, prendas con personalidad y un estilo diseñado para quienes no quieren pasar desapercibidos.</p>
+      <a class="btn" href="#catalogo">Ver catálogo</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="coleccion">
+      <div class="section-title">La esencia JUANLIÉ</div>
+      <p class="section-sub">Descubre aquello que te representa y convierte cada momento en una experiencia.</p>
+      <div class="cards">
+        <article class="card"><div class="icon">👑</div><h3>PERFUMES</h3><p>Fragancias seleccionadas para destacar, despertar curiosidad y dejar huella.</p></article>
+        <article class="card"><div class="icon">🧥</div><h3>ROPA</h3><p>Prendas que reflejan personalidad y elevan tu presencia.</p></article>
+        <article class="card"><div class="icon">✨</div><h3>ESTILO</h3><p>Una identidad pensada para quienes convierten su presencia en una declaración.</p></article>
+      </div>
+    </section>
+
+    <section id="catalogo" class="shop">
+      <div class="shop-inner">
+        <div class="section-title">Catálogo</div>
+        <p class="section-sub">Agrega tus productos al carrito y prepara tu pedido.</p>
+        <div class="products" id="products"></div>
+      </div>
+    </section>
+
+    <div class="quote">Tu presencia puede olvidarse…<br><strong>tu esencia, no.</strong></div>
+
+    <section id="pagos">
+      <div class="section-title">Medios de pago</div>
+      <p class="section-sub">Selecciona el medio de pago que prefieras al coordinar tu pedido.</p>
+      <div class="payment-grid">
+        <div class="payment"><strong>💵 Efectivo</strong><span>Pago al recibir, si está disponible.</span></div>
+        <div class="payment"><strong>🏦 Transferencia</strong><span>Datos bancarios se indican al confirmar.</span></div>
+        <div class="payment"><strong>📲 Pago móvil</strong><span>Disponible según el país y servicio.</span></div>
+        <div class="payment"><strong>💳 Tarjeta</strong><span>Se puede integrar una pasarela de pago.</span></div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="section-title">JUANLIÉ</div>
+      <p>¿Listo para encontrar tu esencia?</p>
+      <p>Finaliza tu pedido y te ayudaremos a coordinar el pago y la entrega.</p>
+      <a class="btn" href="#catalogo">Comprar ahora</a>
+    </section>
+  </main>
+
+  <footer>© 2026 JUANLIÉ | PARFUMS D’EXCEPTION · Luxury • Power • Essence</footer>
+
+  <div id="cartPanel" class="overlay" onclick="if(event.target===this)closePanels()">
+    <div class="panel">
+      <button class="close" onclick="closePanels()">×</button>
+      <h2>MI CARRITO</h2>
+      <div id="cartItems"></div>
+      <div class="total" id="cartTotal">Total: $0</div>
+      <button class="btn" style="width:100%;margin-top:0" onclick="sendOrder()">Enviar pedido</button>
+    </div>
+  </div>
+
+  <div id="helpPanel" class="overlay" onclick="if(event.target===this)closePanels()">
+    <div class="panel">
+      <button class="close" onclick="closePanels()">×</button>
+      <h2>AYUDA</h2>
+      <p style="color:#aaa;font-family:Arial,sans-serif;margin-top:15px">¿Tienes dudas sobre productos, tallas, pagos o pedidos?</p>
+      <div class="help-links">
+        <a href="https://wa.me/" target="_blank" rel="noopener">💬 Hablar por WhatsApp</a>
+        <a href="#pagos" onclick="closePanels()">💳 Ver medios de pago</a>
+        <a href="#catalogo" onclick="closePanels()">🛍️ Volver al catálogo</a>
+      </div>
+    </div>
+  </div>
+
+<script>
+  /*
+    CATÁLOGO DE EJEMPLO.
+    Reemplaza nombre, precio, categoría y emoji por tus productos reales.
+    Más adelante podemos usar fotos reales de cada producto.
+  */
+  const products = [
+    {id:1,name:"Perfume JUANLIÉ ÉLITE",price:89000,cat:"Perfumes",icon:"🧴"},
+    {id:2,name:"Perfume JUANLIÉ NOIR",price:99000,cat:"Perfumes",icon:"🖤"},
+    {id:3,name:"Camiseta JUANLIÉ",price:75000,cat:"Ropa",icon:"👕"},
+    {id:4,name:"Hoodie JUANLIÉ",price:135000,cat:"Ropa",icon:"🧥"},
+    {id:5,name:"Set JUANLIÉ",price:159000,cat:"Colecciones",icon:"🎁"},
+    {id:6,name:"Accesorio JUANLIÉ",price:45000,cat:"Accesorios",icon:"✨"}
+  ];
+
+  let cart = JSON.parse(localStorage.getItem("juanlieCart") || "[]");
+
+  const money = n => "$" + n.toLocaleString("es-CO");
+
+  function renderProducts(){
+    document.getElementById("products").innerHTML = products.map(p => `
+      <article class="product">
+        <div class="product-img">${p.icon}</div>
+        <div class="product-info">
+          <h3>${p.name}</h3>
+          <p>${p.cat}</p>
+          <div class="price">${money(p.price)}</div>
+          <button class="btn" onclick="addToCart(${p.id})">Agregar al carrito</button>
+        </div>
+      </article>
+    `).join("");
+  }
+
+  function addToCart(id){
+    const item = cart.find(x => x.id === id);
+    if(item) item.qty++;
+    else cart.push({id,qty:1});
+    saveCart();
+    openPanel("cartPanel");
+  }
+
+  function changeQty(id,delta){
+    const item = cart.find(x => x.id === id);
+    if(!item) return;
+    item.qty += delta;
+    if(item.qty <= 0) cart = cart.filter(x => x.id !== id);
+    saveCart();
+  }
+
+  function saveCart(){
+    localStorage.setItem("juanlieCart",JSON.stringify(cart));
+    renderCart();
+  }
+
+  function renderCart(){
+    const box = document.getElementById("cartItems");
+    if(!cart.length){
+      box.innerHTML = '<p class="empty">Tu carrito está vacío.</p>';
+    } else {
+      box.innerHTML = cart.map(item => {
+        const p = products.find(x => x.id === item.id);
+        return `<div class="cart-item">
+          <strong>${p.name}</strong><br>
+          <span style="color:#999">${money(p.price)} · ${item.qty} unidad(es)</span>
+          <div class="cart-controls">
+            <button class="small" onclick="changeQty(${p.id},-1)">−</button>
+            <span>${item.qty}</span>
+            <button class="small" onclick="changeQty(${p.id},1)">+</button>
+            <button class="small" onclick="removeItem(${p.id})">Eliminar</button>
+          </div>
+        </div>`;
+      }).join("");
+    }
+    const total = cart.reduce((s,item)=>{
+      const p=products.find(x=>x.id===item.id);
+      return s + p.price*item.qty;
+    },0);
+    document.getElementById("cartTotal").textContent = "Total: " + money(total);
+    document.getElementById("cartCount").textContent = cart.reduce((s,x)=>s+x.qty,0);
+  }
+
+  function removeItem(id){
+    cart = cart.filter(x => x.id !== id);
+    saveCart();
+  }
+
+  function sendOrder(){
+    if(!cart.length){ alert("Agrega al menos un producto al carrito."); return; }
+    let text = "Hola JUANLIÉ, quiero hacer este pedido:%0A%0A";
+    cart.forEach(item=>{
+      const p=products.find(x=>x.id===item.id);
+      text += `• ${p.name} x${item.qty} — ${money(p.price*item.qty)}%0A`;
+    });
+    const total=cart.reduce((s,item)=>{
+      const p=products.find(x=>x.id===item.id); return s+p.price*item.qty;
+    },0);
+    text += `%0ATotal: ${money(total)}%0A%0AQuiero conocer los métodos de pago y la disponibilidad.`;
+    window.open("https://wa.me/?text="+text,"_blank");
+  }
+
+  function openPanel(id){
+    document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("open"));
+    document.getElementById(id).classList.add("open");
+  }
+  function closePanels(){
+    document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("open"));
+  }
+
+  renderProducts();
+  renderCart();
+</script>
+</body>
+</html>
