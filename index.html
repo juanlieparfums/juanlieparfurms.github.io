@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="JUANLIÉ | Parfums d’Exception">
+<title>JUANLIÉ | Parfums d’Exception</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,"Times New Roman",serif;background:#050505;color:#f4ead7;line-height:1.6}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:radial-gradient(circle at 50% 35%,#211b11 0,#0b0a08 34%,#050505 72%)}
+.hero-inner{max-width:900px}.logo{width:min(430px,82vw);max-height:520px;object-fit:contain;margin-bottom:18px}
+.eyebrow,.section-title{letter-spacing:5px;color:#c9a45a;text-transform:uppercase}.eyebrow{font:12px Arial,sans-serif;margin-bottom:20px}
+.tagline{font-size:clamp(20px,3vw,30px);margin:20px auto;max-width:760px}
+.intro{font:17px Arial,sans-serif;color:#c8c0b2;max-width:680px;margin:auto}
+.btn{display:inline-block;margin-top:30px;padding:14px 28px;border:1px solid #c9a45a;color:#e6c77f;background:transparent;text-decoration:none;text-transform:uppercase;letter-spacing:2px;font:12px Arial,sans-serif;cursor:pointer;transition:.25s}
+.btn:hover{background:#c9a45a;color:#050505}
+section{padding:85px 20px;max-width:1100px;margin:auto}.section-title{text-align:center;font-size:15px;margin-bottom:18px}
+.section-sub{text-align:center;color:#aaa;font:16px Arial,sans-serif;max-width:680px;margin:0 auto 40px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{border:1px solid #29251f;background:linear-gradient(145deg,#11100e,#080807);padding:38px 25px;text-align:center}
+.icon{font-size:35px;margin-bottom:15px}.card h3,.payment-card h3{color:#e0c17a;letter-spacing:2px;margin-bottom:10px;font-weight:400}
+.card p,.payment-card p{font:15px Arial,sans-serif;color:#aaa}
+.quote{border-top:1px solid #332c21;border-bottom:1px solid #332c21;text-align:center;padding:70px 20px;margin:20px auto;max-width:850px;font-size:clamp(25px,4vw,42px);font-style:italic;color:#ead9b5}
+.payment{background:#090806;max-width:none}.payment-inner{max-width:1000px;margin:auto}
+.payment-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.payment-card{border:1px solid #29251f;background:#0d0c0a;padding:30px 15px;text-align:center}
+.payment-card .icon{font-size:30px}.payment-card p{font-size:13px}
+.contact{text-align:center;background:#090806;max-width:none}.contact-inner{max-width:800px;margin:auto}.contact p{font:16px Arial,sans-serif;color:#bbb;margin:10px}
+.socials{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:25px}.social{display:inline-block;border:1px solid #29251f;padding:13px 20px;color:#e0c17a;text-decoration:none;font:13px Arial,sans-serif;letter-spacing:1px}
+footer{text-align:center;border-top:1px solid #211e19;padding:35px 20px;color:#7e7568;font:13px Arial,sans-serif}
+#helpButton{position:fixed;right:20px;bottom:20px;z-index:20;width:58px;height:58px;border-radius:50%;border:1px solid #c9a45a;background:#c9a45a;color:#050505;font-size:25px;cursor:pointer;box-shadow:0 5px 25px #000}
+.overlay{display:none;position:fixed;inset:0;background:#000b;z-index:30}.overlay.open{display:block}
+.panel{position:absolute;right:0;top:0;height:100%;width:min(430px,94vw);background:#0b0a08;border-left:1px solid #332c21;padding:28px;overflow:auto}
+.panel h2{color:#e0c17a;font-weight:400;letter-spacing:3px}.close{float:right;background:none;border:0;color:#aaa;font-size:28px;cursor:pointer}
+.help-links a{display:block;color:#e0c17a;text-decoration:none;border:1px solid #29251f;padding:15px;margin-top:12px;font:14px Arial,sans-serif}
+@media(max-width:850px){.cards,.payment-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.cards,.payment-grid{grid-template-columns:1fr}.logo{max-height:400px}}
+</style>
+</head>
+<body>
+
+<button id="helpButton" onclick="openHelp()" aria-label="Ayuda">?</button>
+
+<header class="hero">
+<div class="hero-inner">
+<img class="logo" src="logo.png" alt="JUANLIÉ | Parfums d’Exception">
+<div class="eyebrow">Luxury • Power • Essence</div>
+<div class="tagline">No vendemos simplemente perfumes. Creamos una esencia que habla de ti antes de que digas una palabra.</div>
+<p class="intro">Fragancias seleccionadas, prendas con personalidad y un estilo diseñado para quienes no quieren pasar desapercibidos.</p>
+<a class="btn" href="#coleccion">Descubrir JUANLIÉ</a>
+</div>
+</header>
+
+<main>
+<section id="coleccion">
+<div class="section-title">La esencia JUANLIÉ</div>
+<p class="section-sub">Descubre aquello que te representa y convierte cada momento en una experiencia.</p>
+<div class="cards">
+<article class="card"><div class="icon">👑</div><h3>PERFUMES</h3><p>Fragancias seleccionadas para destacar, despertar curiosidad y dejar huella.</p></article>
+<article class="card"><div class="icon">🧥</div><h3>ROPA</h3><p>Prendas que reflejan personalidad y elevan tu presencia.</p></article>
+<article class="card"><div class="icon">✨</div><h3>ESTILO</h3><p>Una identidad pensada para quienes convierten su presencia en una declaración.</p></article>
+</div>
+</section>
+
+<div class="quote">Tu presencia puede olvidarse…<br><strong>tu esencia, no.</strong></div>
+
+<section class="payment" id="pagos">
+<div class="payment-inner">
+<div class="section-title">Medios de pago</div>
+<p class="section-sub">Realiza tu pedido de manera virtual y elige el medio de pago que prefieras.</p>
+<div class="payment-grid">
+<div class="payment-card"><div class="icon">💜</div><h3>NEQUI</h3><p>Pago digital mediante Nequi.</p></div>
+<div class="payment-card"><div class="icon">🔵</div><h3>DAVIPLATA</h3><p>Pago digital mediante DaviPlata.</p></div>
+<div class="payment-card"><div class="icon">🏦</div><h3>PSE</h3><p>Pago en línea mediante PSE.</p></div>
+<div class="payment-card"><div class="icon">💳</div><h3>TARJETA</h3><p>Tarjeta de crédito.</p></div>
+</div>
+</div>
+</section>
+
+<section class="contact">
+<div class="contact-inner">
+<div class="section-title">ATENCIÓN VIRTUAL</div>
+<p>¿Tienes preguntas o quieres realizar un pedido?</p>
+<p>Estamos disponibles de manera virtual para ayudarte.</p>
+<div class="socials">
+<a class="social" href="https://wa.me/573116467249" target="_blank" rel="noopener">💬 WHATSAPP</a>
+<a class="social" href="https://instagram.com/juanlie__parfums" target="_blank" rel="noopener">📸 INSTAGRAM</a>
+</div>
+<a class="btn" href="https://wa.me/573116467249?text=Hola%20JUANLI%C3%89%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener">Contactar ahora</a>
+</div>
+</section>
+</main>
+
+<footer>© 2026 JUANLIÉ | PARFUMS D’EXCEPTION · Luxury • Power • Essence</footer>
+
+<div id="helpPanel" class="overlay" onclick="if(event.target===this)closeHelp()">
+<div class="panel">
+<button class="close" onclick="closeHelp()">×</button>
+<h2>AYUDA</h2>
+<p style="color:#aaa;font:14px Arial,sans-serif;margin-top:15px">Estamos aquí para ayudarte de forma virtual.</p>
+<div class="help-links">
+<a href="https://wa.me/573116467249?text=Hola%20JUANLI%C3%89%2C%20necesito%20ayuda." target="_blank" rel="noopener">💬 Hablar por WhatsApp</a>
+<a href="https://instagram.com/juanlie__parfums" target="_blank" rel="noopener">📸 Escribir por Instagram</a>
+<a href="#pagos" onclick="closeHelp()">💳 Consultar medios de pago</a>
+</div>
+</div>
+</div>
+
+<script>
+function openHelp(){document.getElementById("helpPanel").classList.add("open")}
+function closeHelp(){document.getElementById("helpPanel").classList.remove("open")}
+</script>
+</body>
+</html>
