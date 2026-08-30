@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="JUANLIÉ | Parfums d’Exception">
+<title>JUANLIÉ | Parfums d’Exception</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,"Times New Roman",serif;background:#050505;color:#f4ead7;line-height:1.6}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:radial-gradient(circle at 50% 35%,#211b11 0,#0b0a08 34%,#050505 72%)}
+.hero-inner{max-width:900px}.logo{width:min(430px,82vw);max-height:520px;object-fit:contain;margin-bottom:18px}
+.eyebrow,.section-title{letter-spacing:5px;color:#c9a45a;text-transform:uppercase}.eyebrow{font:12px Arial,sans-serif;margin-bottom:20px}
+.tagline{font-size:clamp(20px,3vw,30px);margin:20px auto;max-width:760px}
+.intro{font:17px Arial,sans-serif;color:#c8c0b2;max-width:680px;margin:auto}
+.btn{display:inline-block;margin-top:30px;padding:14px 28px;border:1px solid #c9a45a;color:#e6c77f;background:transparent;text-decoration:none;text-transform:uppercase;letter-spacing:2px;font:12px Arial,sans-serif;cursor:pointer;transition:.25s}
+.btn:hover{background:#c9a45a;color:#050505}
+section{padding:85px 20px;max-width:1100px;margin:auto}.section-title{text-align:center;font-size:15px;margin-bottom:18px}
+.section-sub{text-align:center;color:#aaa;font:16px Arial,sans-serif;max-width:680px;margin:0 auto 40px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{border:1px solid #29251f;background:linear-gradient(145deg,#11100e,#080807);padding:38px 25px;text-align:center}
+.icon{font-size:35px;margin-bottom:15px}.card h3,.payment-card h3{color:#e0c17a;letter-spacing:2px;margin-bottom:10px;font-weight:400}
+.card p,.payment-card p{font:15px Arial,sans-serif;color:#aaa}
+.quote{border-top:1px solid #332c21;border-bottom:1px solid #332c21;text-align:center;padding:70px 20px;margin:20px auto;max-width:850px;font-size:clamp(25px,4vw,42px);font-style:italic;color:#ead9b5}
+.payment{background:#090806;max-width:none}.payment-inner{max-width:1000px;margin:auto}
+.payment-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.payment-card{border:1px solid #29251f;background:#0d0c0a;padding:30px 15px;text-align:center}
+.payment-card .icon{font-size:30px}.payment-card p{font-size:13px}
+.contact{text-align:center;background:#090806;max-width:none}.contact-inner{max-width:800px;margin:auto}.contact p{font:16px Arial,sans-serif;color:#bbb;margin:10px}
+.socials{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:25px}.social{display:inline-block;border:1px solid #29251f;padding:13px 20px;color:#e0c17a;text-decoration:none;font:13px Arial,sans-serif;letter-spacing:1px}
+footer{text-align:center;border-top:1px solid #211e19;padding:35px 20px;color:#7e7568;font:13px Arial,sans-serif}
+#helpButton{position:fixed;right:20px;bottom:20px;z-index:20;width:58px;height:58px;border-radius:50%;border:1px solid #c9a45a;background:#c9a45a;color:#050505;font-size:25px;cursor:pointer;box-shadow:0 5px 25px #000}
+.overlay{display:none;position:fixed;inset:0;background:#000b;z-index:30}.overlay.open{display:block}
+.panel{position:absolute;right:0;top:0;height:100%;width:min(430px,94vw);background:#0b0a08;border-left:1px solid #332c21;padding:28px;overflow:auto}
+.panel h2{color:#e0c17a;font-weight:400;letter-spacing:3px}.close{float:right;background:none;border:0;color:#aaa;font-size:28px;cursor:pointer}
+.help-links a{display:block;color:#e0c17a;text-decoration:none;border:1px solid #29251f;padding:15px;margin-top:12px;font:14px Arial,sans-serif}
+
+
+.order-section{background:radial-gradient(circle at 50% 10%,#15120c 0,#090806 38%,#070706 100%);max-width:none}
+.order-inner{max-width:980px;margin:auto}
+.order-form{position:relative;border:1px solid #302a20;background:linear-gradient(145deg,rgba(20,18,14,.98),rgba(8,8,7,.98));padding:clamp(24px,5vw,48px);box-shadow:0 20px 70px rgba(0,0,0,.35)}
+.order-form:before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,#c9a45a,transparent)}
+.form-step{margin-bottom:34px;padding-bottom:30px;border-bottom:1px solid #24211c}
+.form-step:last-of-type{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.step-head{display:flex;align-items:center;gap:13px;margin-bottom:22px}
+.step-number{display:flex;align-items:center;justify-content:center;width:31px;height:31px;border:1px solid #c9a45a;border-radius:50%;color:#e0c17a;font:12px Arial,sans-serif}
+.step-title{color:#e0c17a;letter-spacing:2.5px;font:13px Arial,sans-serif}
+.step-subtitle{margin-top:-14px;margin-left:44px;margin-bottom:20px;color:#777269;font:12px Arial,sans-serif}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:19px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+.field label,.field legend{font:11px Arial,sans-serif;letter-spacing:1.4px;text-transform:uppercase;color:#d7c39a}
+.field input,.field textarea,.field select{
+width:100%;padding:14px 15px;border:1px solid #39342b;border-radius:0;background:#090908;color:#f4ead7;
+font:15px Arial,sans-serif;outline:none;transition:border-color .2s,box-shadow .2s
+}
+.field input::placeholder,.field textarea::placeholder{color:#5f5b54}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#c9a45a;box-shadow:0 0 0 2px rgba(201,164,90,.08)}
+.field textarea{min-height:105px;resize:vertical}
+.field select{appearance:auto}
+.payment-options{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border:0;padding:0;margin:0}
+.payment-options legend{grid-column:1/-1;margin-bottom:1px}
+.payment-option{position:relative}
+.payment-option input{position:absolute;opacity:0;pointer-events:none}
+.payment-option label{
+display:flex;align-items:center;justify-content:center;min-height:58px;padding:12px 8px;border:1px solid #29251f;
+text-align:center;font:11px Arial,sans-serif;letter-spacing:1px;color:#cfc5b4;cursor:pointer;transition:.2s
+}
+.payment-option label:hover{border-color:#625238}
+.payment-option input:checked+label{border-color:#c9a45a;color:#e0c17a;background:linear-gradient(145deg,#17130d,#0c0b09);box-shadow:inset 0 0 0 1px rgba(201,164,90,.12)}
+.form-note{margin-top:22px;padding:13px 15px;border-left:1px solid #6f5a30;background:#0c0b09;color:#898278;font:12px Arial,sans-serif}
+.form-actions{text-align:center;margin-top:30px}
+.form-actions .btn{min-width:220px;margin-top:0}
+.order-status{display:none;margin-top:16px;text-align:center;color:#c9a45a;font:12px Arial,sans-serif}
+@media(max-width:650px){
+.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.payment-options{grid-template-columns:1fr 1fr}
+.order-form{padding:25px 18px}.step-subtitle{margin-left:44px}
+}
+@media(max-width:420px){.payment-options{grid-template-columns:1fr}.payment-options label{min-height:52px}}
+
+
+.payment-card{display:flex;flex-direction:column;align-items:center}
+.payment-detail-btn{font-size:10px;padding:10px 14px;margin-top:18px}
+.payment-info{display:none;max-width:760px;margin:35px auto 0;border:1px solid #4b3d25;background:linear-gradient(145deg,#15120d,#0a0908);padding:28px;text-align:center}
+.payment-info.open{display:block}
+.payment-info h3{color:#e0c17a;font-weight:400;letter-spacing:2px;margin-bottom:10px}
+.payment-info p{font:14px Arial,sans-serif;color:#aaa}
+.payment-info-action{margin-top:16px}
+
+
+.order-payment-result{
+display:none;margin-top:24px;padding:24px;border:1px solid #4b3d25;
+background:linear-gradient(145deg,#15120d,#0a0908);text-align:center
+}
+.order-payment-result.open{display:block}
+.order-payment-result h3{color:#e0c17a;font-weight:400;letter-spacing:2px;margin-bottom:10px}
+.order-payment-result p{font:14px Arial,sans-serif;color:#aaa;margin:7px 0}
+.order-payment-number{display:block;margin:14px 0;color:#e6c77f;font:22px Arial,sans-serif;letter-spacing:2px}
+.order-payment-result .btn{margin-top:8px}
+
+
+.order-success{
+display:none;margin-top:24px;padding:22px;border:1px solid #5b4a2d;
+background:linear-gradient(145deg,#15120d,#0a0908);text-align:center
+}
+.order-success.open{display:block}
+.order-success .success-icon{
+width:44px;height:44px;margin:0 auto 12px;border:1px solid #c9a45a;border-radius:50%;
+display:flex;align-items:center;justify-content:center;color:#e6c77f;font:20px Arial,sans-serif
+}
+.order-success h3{color:#e0c17a;font-weight:400;letter-spacing:2px;margin-bottom:8px}
+.order-success p{font:14px Arial,sans-serif;color:#aaa;margin:5px 0}
+.next-step-badge{
+display:inline-block;margin-top:12px;padding:7px 10px;border:1px solid #332c21;
+color:#c9a45a;font:10px Arial,sans-serif;letter-spacing:1.3px;text-transform:uppercase
+}
+
+
+.review-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:60;padding:20px;overflow:auto}
+.review-overlay.open{display:flex;align-items:center;justify-content:center}
+.review-card{width:min(680px,100%);border:1px solid #4b3d25;background:linear-gradient(145deg,#15120d,#090807);padding:28px;box-shadow:0 25px 80px rgba(0,0,0,.55)}
+.review-card h3{color:#e0c17a;font-weight:400;letter-spacing:2px;text-align:center;margin-bottom:8px}
+.review-card>p{text-align:center;color:#8d877e;font:13px Arial,sans-serif;margin-bottom:22px}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.review-item{border:1px solid #29251f;background:#0b0a09;padding:13px 14px}
+.review-item.full{grid-column:1/-1}
+.review-label{display:block;color:#806f50;font:10px Arial,sans-serif;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px}
+.review-value{color:#e9dfcc;font:14px Arial,sans-serif;word-break:break-word}
+.review-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.review-actions .btn{margin-top:0;min-width:180px}
+.review-cancel{border-color:#3a352d;color:#b7afa1}
+@media(max-width:600px){.review-grid{grid-template-columns:1fr}.review-item.full{grid-column:auto}.review-card{padding:22px 16px}}
+
+
+.order-meta{
+display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:10px
+}
+.order-meta span{
+display:inline-block;padding:7px 10px;border:1px solid #332c21;
+color:#c9a45a;font:10px Arial,sans-serif;letter-spacing:1px;text-transform:uppercase
+}
+.order-history{
+margin-top:28px;border:1px solid #29251f;background:#0b0a09;padding:22px
+}
+.order-history h3{
+color:#e0c17a;font-weight:400;letter-spacing:2px;text-align:center;margin-bottom:8px
+}
+.order-history>p{
+text-align:center;color:#777269;font:12px Arial,sans-serif;margin-bottom:18px
+}
+.history-list{display:grid;gap:10px}
+.history-item{
+border:1px solid #29251f;background:#090908;padding:14px
+}
+.history-top{
+display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap
+}
+.history-number{color:#e6c77f;font:13px Arial,sans-serif;letter-spacing:1px}
+.history-date{color:#777269;font:11px Arial,sans-serif}
+.history-details{margin-top:8px;color:#aaa;font:12px Arial,sans-serif;line-height:1.5}
+.history-empty{text-align:center;color:#68635b;font:12px Arial,sans-serif;padding:8px}
+.history-actions{text-align:center;margin-top:14px}
+.history-actions .btn{margin-top:0;font-size:10px;padding:9px 13px}
+
+@media(max-width:850px){.cards,.payment-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.cards,.payment-grid{grid-template-columns:1fr}.logo{max-height:400px}}
+</style>
+</head>
+<body>
+
+<button id="helpButton" onclick="openHelp()" aria-label="Ayuda">?</button>
+
+<header class="hero">
+<div class="hero-inner">
+<img class="logo" src="logo.png" alt="JUANLIÉ | Parfums d’Exception">
+<div class="eyebrow">Luxury • Power • Essence</div>
+<div class="tagline">No vendemos simplemente perfumes. Creamos una esencia que habla de ti antes de que digas una palabra.</div>
+<p class="intro">Fragancias seleccionadas, prendas con personalidad y un estilo diseñado para quienes no quieren pasar desapercibidos.</p>
+<a class="btn" href="#pedido">Realizar pedido</a>
+</div>
+</header>
+
+<main>
+<section id="coleccion">
+<div class="section-title">La esencia JUANLIÉ</div>
+<p class="section-sub">Descubre aquello que te representa y convierte cada momento en una experiencia.</p>
+<div class="cards">
+<article class="card"><div class="icon">👑</div><h3>PERFUMES</h3><p>Fragancias seleccionadas para destacar, despertar curiosidad y dejar huella.</p></article>
+<article class="card"><div class="icon">🧥</div><h3>ROPA</h3><p>Prendas que reflejan personalidad y elevan tu presencia.</p></article>
+<article class="card"><div class="icon">✨</div><h3>ESTILO</h3><p>Una identidad pensada para quienes convierten su presencia en una declaración.</p></article>
+</div>
+</section>
+
+<div class="quote">Tu presencia puede olvidarse…<br><strong>tu esencia, no.</strong></div>
+
+
+
+<section class="order-section" id="pedido">
+<div class="order-inner">
+<div class="section-title">REALIZA TU PEDIDO</div>
+<p class="section-sub">Cuéntanos qué estás buscando y nos encargaremos de ayudarte de manera virtual.</p>
+
+<form class="order-form" id="orderForm">
+<div class="form-step">
+<div class="step-head"><span class="step-number">01</span><h3 class="step-title">TUS DATOS</h3></div>
+<p class="step-subtitle">Necesitamos estos datos para contactarte.</p>
+<div class="form-grid">
+<div class="field">
+<label for="nombre">Nombre completo *</label>
+<input id="nombre" name="nombre" type="text" required autocomplete="name" placeholder="Tu nombre completo">
+</div>
+<div class="field">
+<label for="whatsapp">WhatsApp *</label>
+<input id="whatsapp" name="whatsapp" type="tel" required autocomplete="tel" placeholder="Tu número">
+</div>
+<div class="field full">
+<label for="correo">Correo electrónico *</label>
+<input id="correo" name="correo" type="email" required autocomplete="email" placeholder="tu@correo.com">
+</div>
+</div>
+</div>
+
+<div class="form-step">
+<div class="step-head"><span class="step-number">02</span><h3 class="step-title">TU PEDIDO</h3></div>
+<p class="step-subtitle">Indícanos qué producto estás buscando.</p>
+<div class="form-grid">
+<div class="field full">
+<label for="producto">Producto que desea *</label>
+<input id="producto" name="producto" type="text" required placeholder="Ej. Perfume, camisa, conjunto...">
+</div>
+<div class="field">
+<label for="cantidad">Cantidad *</label>
+<input id="cantidad" name="cantidad" type="number" min="1" value="1" required>
+</div>
+<div class="field">
+<label for="talla">Talla</label>
+<input id="talla" name="talla" type="text" placeholder="Solo si corresponde">
+</div>
+<div class="field full">
+<label for="observaciones">Observaciones</label>
+<textarea id="observaciones" name="observaciones" placeholder="Color, referencia, aroma, preferencia o cualquier detalle adicional."></textarea>
+</div>
+</div>
+</div>
+
+<div class="form-step">
+<div class="step-head"><span class="step-number">03</span><h3 class="step-title">ENTREGA</h3></div>
+<p class="step-subtitle">¿Dónde quieres recibir tu pedido?</p>
+<div class="form-grid">
+<div class="field">
+<label for="ciudad">Ciudad *</label>
+<input id="ciudad" name="ciudad" type="text" required autocomplete="address-level2" placeholder="Tu ciudad">
+</div>
+<div class="field">
+<label for="direccion">Dirección *</label>
+<input id="direccion" name="direccion" type="text" required autocomplete="street-address" placeholder="Dirección de entrega">
+</div>
+<div class="field full">
+<label for="entrega">Información adicional para la entrega</label>
+<textarea id="entrega" name="entrega" placeholder="Barrio, referencia, horario preferido, etc."></textarea>
+</div>
+</div>
+</div>
+
+<div class="form-step">
+<div class="step-head"><span class="step-number">04</span><h3 class="step-title">MÉTODO DE PAGO</h3></div>
+<p class="step-subtitle">Selecciona cómo prefieres pagar.</p>
+<div class="form-grid">
+<div class="field full">
+<fieldset class="payment-options">
+<legend>Método de pago *</legend>
+<div class="payment-option"><input id="nequi" type="radio" name="pago" value="Nequi" required><label for="nequi">💜 NEQUI</label></div>
+<div class="payment-option"><input id="daviplata" type="radio" name="pago" value="DaviPlata"><label for="daviplata">🔵 DAVIPLATA</label></div>
+<div class="payment-option"><input id="pse" type="radio" name="pago" value="PSE"><label for="pse">🏦 PSE</label></div>
+<div class="payment-option"><input id="tarjeta" type="radio" name="pago" value="Tarjeta de crédito"><label for="tarjeta">💳 TARJETA</label></div>
+</fieldset>
+</div>
+</div>
+</div>
+
+<p class="form-note">Por ahora solo registraremos tu método de pago. No se muestran datos de Nequi/DaviPlata ni enlaces de pago.</p>
+
+<div class="form-actions">
+<button class="btn" type="submit">REVISAR PEDIDO</button>
+</div>
+<div class="order-status" id="orderStatus" role="status"></div>
+
+<div class="order-success" id="orderSuccess" aria-live="polite">
+<div class="success-icon">✓</div>
+<h3>PEDIDO ENVIADO</h3>
+<p>Tu solicitud ya está preparada en WhatsApp.</p>
+<p id="successOrderNumber" style="color:#e6c77f;font-weight:bold"></p>
+<div class="order-meta">
+<span id="successOrderDate"></span>
+<span id="successOrderTime"></span>
+</div>
+<p>Ahora revisa el siguiente paso para completar el pago.</p>
+<span class="next-step-badge">Siguiente paso: pago</span>
+</div>
+
+<div class="order-payment-result" id="orderPaymentResult" aria-live="polite">
+<h3 id="orderPaymentTitle">INSTRUCCIONES DE PAGO</h3>
+<p id="orderPaymentText"></p>
+<div id="orderPaymentAction"></div>
+</div>
+</form>
+
+<div class="order-history" id="orderHistory">
+<h3>ÚLTIMOS PEDIDOS EN ESTE DISPOSITIVO</h3>
+<p>Este historial se guarda únicamente en este navegador.</p>
+<div class="history-list" id="historyList"></div>
+<div class="history-actions">
+<button type="button" class="btn" onclick="clearOrderHistory()">BORRAR HISTORIAL</button>
+</div>
+</div>
+
+</div>
+</section>
+
+
+<section class="payment" id="pagos">
+<div class="payment-inner">
+<div class="section-title">MEDIOS DE PAGO</div>
+<p class="section-sub">Selecciona tu forma de pago. Por ahora te mostraremos la información disponible y confirmaremos los detalles de tu compra por WhatsApp.</p>
+
+<div class="payment-grid">
+<div class="payment-card">
+<div class="icon">💜</div>
+<h3>NEQUI</h3>
+<p>Pago digital mediante Nequi.</p>
+<button class="btn payment-detail-btn" type="button" onclick="showPayment('nequi')">VER INFORMACIÓN</button>
+</div>
+
+<div class="payment-card">
+<div class="icon">🔵</div>
+<h3>DAVIPLATA</h3>
+<p>Pago digital mediante DaviPlata.</p>
+<button class="btn payment-detail-btn" type="button" onclick="showPayment('daviplata')">VER INFORMACIÓN</button>
+</div>
+
+<div class="payment-card">
+<div class="icon">🏦</div>
+<h3>PSE</h3>
+<p>Pago en línea mediante PSE.</p>
+<button class="btn payment-detail-btn" type="button" onclick="showPayment('pse')">VER INFORMACIÓN</button>
+</div>
+
+<div class="payment-card">
+<div class="icon">💳</div>
+<h3>TARJETA</h3>
+<p>Pago con tarjeta de crédito.</p>
+<button class="btn payment-detail-btn" type="button" onclick="showPayment('tarjeta')">VER INFORMACIÓN</button>
+</div>
+</div>
+
+<div id="paymentInfo" class="payment-info" aria-live="polite">
+<h3 id="paymentInfoTitle">MÉTODO DE PAGO</h3>
+<p id="paymentInfoText">Selecciona una opción para consultar sus detalles.</p>
+<div id="paymentInfoAction"></div>
+</div>
+</div>
+</section>
+
+<section class="contact">
+<div class="contact-inner">
+<div class="section-title">ATENCIÓN VIRTUAL</div>
+<p>¿Tienes preguntas o quieres realizar un pedido?</p>
+<p>Estamos disponibles de manera virtual para ayudarte.</p>
+<div class="socials">
+<a class="social" href="https://wa.me/573143665793" target="_blank" rel="noopener">💬 WHATSAPP</a>
+<a class="social" href="https://instagram.com/juanlie__parfums" target="_blank" rel="noopener">📸 INSTAGRAM</a>
+</div>
+<a class="btn" href="https://wa.me/573143665793?text=Hola%20JUANLI%C3%89%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener">Contactar ahora</a>
+</div>
+</section>
+</main>
+
+<footer>© 2026 JUANLIÉ | PARFUMS D’EXCEPTION · Luxury • Power • Essence</footer>
+
+
+<div id="reviewOverlay" class="review-overlay" onclick="if(event.target===this)closeReview()">
+<div class="review-card" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
+<h3 id="reviewTitle">REVISA TU PEDIDO</h3>
+<p>Confirma que todo esté correcto antes de enviarlo por WhatsApp.</p>
+
+<div class="review-grid">
+<div class="review-item full"><span class="review-label">Número de pedido</span><span class="review-value" id="rPedido"></span></div>
+<div class="review-item"><span class="review-label">Fecha</span><span class="review-value" id="rFecha"></span></div>
+<div class="review-item"><span class="review-label">Hora</span><span class="review-value" id="rHora"></span></div>
+<div class="review-item"><span class="review-label">Nombre</span><span class="review-value" id="rNombre"></span></div>
+<div class="review-item"><span class="review-label">WhatsApp</span><span class="review-value" id="rWhatsapp"></span></div>
+<div class="review-item full"><span class="review-label">Correo</span><span class="review-value" id="rCorreo"></span></div>
+<div class="review-item full"><span class="review-label">Producto</span><span class="review-value" id="rProducto"></span></div>
+<div class="review-item"><span class="review-label">Cantidad</span><span class="review-value" id="rCantidad"></span></div>
+<div class="review-item"><span class="review-label">Talla</span><span class="review-value" id="rTalla"></span></div>
+<div class="review-item full"><span class="review-label">Observaciones</span><span class="review-value" id="rObservaciones"></span></div>
+<div class="review-item"><span class="review-label">Ciudad</span><span class="review-value" id="rCiudad"></span></div>
+<div class="review-item"><span class="review-label">Dirección</span><span class="review-value" id="rDireccion"></span></div>
+<div class="review-item full"><span class="review-label">Información de entrega</span><span class="review-value" id="rEntrega"></span></div>
+<div class="review-item full"><span class="review-label">Método de pago</span><span class="review-value" id="rPago"></span></div>
+</div>
+
+<div class="review-actions">
+<button type="button" class="btn review-cancel" onclick="closeReview()">EDITAR</button>
+<button type="button" class="btn" id="confirmOrderBtn">CONFIRMAR Y ENVIAR</button>
+</div>
+</div>
+</div>
+
+<div id="helpPanel" class="overlay" onclick="if(event.target===this)closeHelp()">
+<div class="panel">
+<button class="close" onclick="closeHelp()">×</button>
+<h2>AYUDA</h2>
+<p style="color:#aaa;font:14px Arial,sans-serif;margin-top:15px">Estamos aquí para ayudarte de forma virtual.</p>
+<div class="help-links">
+<a href="https://wa.me/573143665793?text=Hola%20JUANLI%C3%89%2C%20necesito%20ayuda." target="_blank" rel="noopener">💬 Hablar por WhatsApp</a>
+<a href="https://instagram.com/juanlie__parfums" target="_blank" rel="noopener">📸 Escribir por Instagram</a>
+<a href="#pagos" onclick="closeHelp()">💳 Consultar medios de pago</a>
+</div>
+</div>
+</div>
+
+<script>
+function openHelp(){document.getElementById("helpPanel").classList.add("open")}
+function closeHelp(){document.getElementById("helpPanel").classList.remove("open")}
+
+
+
+let pendingOrderData = null;
+let pendingOrderNumber = null;
+let pendingOrderDate = null;
+let pendingOrderTime = null;
+let pendingOrderISO = null;
+
+
+function generateOrderTimestamp(){
+  const now = new Date();
+  return {
+    iso: now.toISOString(),
+    date: now.toLocaleDateString("es-CO", {
+      year:"numeric", month:"2-digit", day:"2-digit"
+    }),
+    time: now.toLocaleTimeString("es-CO", {
+      hour:"2-digit", minute:"2-digit", hour12:true
+    })
+  };
+}
+
+function generateOrderNumber(){
+  const now = new Date();
+  const y = String(now.getFullYear()).slice(-2);
+  const m = String(now.getMonth() + 1).padStart(2, "0");
+  const d = String(now.getDate()).padStart(2, "0");
+  const random = Math.floor(1000 + Math.random() * 9000);
+  return "JUA-" + y + m + d + "-" + random;
+}
+
+
+function closeReview(){
+  document.getElementById("reviewOverlay").classList.remove("open");
+}
+
+function openReview(data){
+  const value = (key, fallback="No indicado") => data.get(key) || fallback;
+
+  document.getElementById("rPedido").textContent = pendingOrderNumber;
+  document.getElementById("rFecha").textContent = pendingOrderDate;
+  document.getElementById("rHora").textContent = pendingOrderTime;
+  document.getElementById("rNombre").textContent = value("nombre");
+  document.getElementById("rWhatsapp").textContent = value("whatsapp");
+  document.getElementById("rCorreo").textContent = value("correo");
+  document.getElementById("rProducto").textContent = value("producto");
+  document.getElementById("rCantidad").textContent = value("cantidad");
+  document.getElementById("rTalla").textContent = value("talla", "No aplica / no indicada");
+  document.getElementById("rObservaciones").textContent = value("observaciones", "Ninguna");
+  document.getElementById("rCiudad").textContent = value("ciudad");
+  document.getElementById("rDireccion").textContent = value("direccion");
+  document.getElementById("rEntrega").textContent = value("entrega", "Ninguna");
+  document.getElementById("rPago").textContent = value("pago");
+
+  document.getElementById("reviewOverlay").classList.add("open");
+}
+
+document.getElementById("orderForm").addEventListener("submit", function(event){
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  pendingOrderData = new FormData(form);
+  pendingOrderNumber = generateOrderNumber();
+  const timestamp = generateOrderTimestamp();
+  pendingOrderDate = timestamp.date;
+  pendingOrderTime = timestamp.time;
+  pendingOrderISO = timestamp.iso;
+  openReview(pendingOrderData);
+});
+
+document.getElementById("confirmOrderBtn").addEventListener("click", function(){
+  if (!pendingOrderData) return;
+
+  const data = pendingOrderData;
+  closeReview();
+
+  const mensaje = [
+    "Hola JUANLIÉ, quiero realizar un pedido.",
+    "Número de pedido: " + pendingOrderNumber,
+    "Fecha: " + pendingOrderDate,
+    "Hora: " + pendingOrderTime,
+    "",
+    "👤 DATOS DEL CLIENTE",
+    "Nombre: " + data.get("nombre"),
+    "WhatsApp: " + data.get("whatsapp"),
+    "Correo: " + data.get("correo"),
+    "",
+    "🛍️ PEDIDO",
+    "Producto: " + data.get("producto"),
+    "Cantidad: " + data.get("cantidad"),
+    "Talla: " + (data.get("talla") || "No aplica / no indicada"),
+    "Observaciones: " + (data.get("observaciones") || "Ninguna"),
+    "",
+    "📦 ENTREGA",
+    "Dirección: " + data.get("direccion"),
+    "Ciudad: " + data.get("ciudad"),
+    "Información adicional: " + (data.get("entrega") || "Ninguna"),
+    "",
+    "💳 MÉTODO DE PAGO",
+    data.get("pago")
+  ].join("\n");
+
+  const url = "https://wa.me/573143665793?text=" + encodeURIComponent(mensaje);
+  const status = document.getElementById("orderStatus");
+  status.textContent = "Abriendo WhatsApp con tu pedido...";
+  status.style.display = "block";
+
+  const whatsappWindow = window.open(url, "_blank", "noopener");
+  if (!whatsappWindow) {
+    window.location.href = url;
+  }
+
+  const selectedPayment = data.get("pago");
+  const successBox = document.getElementById("orderSuccess");
+  const result = document.getElementById("orderPaymentResult");
+  const resultTitle = document.getElementById("orderPaymentTitle");
+  const resultText = document.getElementById("orderPaymentText");
+  const resultAction = document.getElementById("orderPaymentAction");
+
+  document.getElementById("successOrderNumber").textContent = "Pedido " + pendingOrderNumber;
+  document.getElementById("successOrderDate").textContent = "Fecha: " + pendingOrderDate;
+  document.getElementById("successOrderTime").textContent = "Hora: " + pendingOrderTime;
+  successBox.classList.add("open");
+  saveOrderToHistory(data);
+  resultAction.innerHTML = "";
+
+  if (selectedPayment === "Nequi" || selectedPayment === "DaviPlata") {
+    resultTitle.textContent = "PAGO POR " + selectedPayment.toUpperCase();
+    resultText.textContent = "Puedes realizar el pago al siguiente número:";
+
+    const number = document.createElement("strong");
+    number.className = "order-payment-number";
+    number.textContent = "3116467249";
+    resultAction.appendChild(number);
+
+    const copyButton = document.createElement("button");
+    copyButton.type = "button";
+    copyButton.className = "btn";
+    copyButton.textContent = "COPIAR NÚMERO";
+    copyButton.onclick = async function(){
+      try {
+        await navigator.clipboard.writeText("3116467249");
+        copyButton.textContent = "NÚMERO COPIADO ✓";
+        setTimeout(() => copyButton.textContent = "COPIAR NÚMERO", 1800);
+      } catch {
+        copyButton.textContent = "3116467249";
+      }
+    };
+    resultAction.appendChild(copyButton);
+
+    const note = document.createElement("p");
+    note.textContent = "Cuando realices el pago, envíanos el comprobante por WhatsApp para confirmar tu pedido.";
+    note.style.marginTop = "16px";
+    resultAction.appendChild(note);
+
+    const receiptButton = document.createElement("a");
+    receiptButton.className = "btn";
+    receiptButton.style.marginTop = "12px";
+    receiptButton.target = "_blank";
+    receiptButton.rel = "noopener";
+    receiptButton.textContent = "ENVIAR COMPROBANTE POR WHATSAPP";
+    receiptButton.href = "https://wa.me/573143665793?text=" + encodeURIComponent(
+      "Hola JUANLIÉ, ya realicé el pago del pedido " + pendingOrderNumber + " (" + pendingOrderDate + " " + pendingOrderTime + ") por " + selectedPayment + ". Quiero enviarles el comprobante para confirmar mi pedido."
+    );
+    resultAction.appendChild(receiptButton);
+  } else if (selectedPayment === "PSE") {
+    resultTitle.textContent = "PAGO POR PSE";
+    resultText.textContent = "Tu pedido fue enviado. Te confirmaremos por WhatsApp el enlace o proceso de pago por PSE cuando esté habilitado.";
+  } else if (selectedPayment === "Tarjeta de crédito") {
+    resultTitle.textContent = "PAGO CON TARJETA";
+    resultText.textContent = "Tu pedido fue enviado. Te confirmaremos por WhatsApp el enlace de pago seguro con tarjeta cuando esté habilitado.";
+  }
+
+  result.classList.add("open");
+
+  setTimeout(() => {
+    successBox.scrollIntoView({behavior:"smooth", block:"start"});
+  }, 200);
+
+  setTimeout(() => {
+    result.scrollIntoView({behavior:"smooth", block:"center"});
+  }, 950);
+
+  pendingOrderData = null;
+});
+
+
+function getOrderHistory(){
+  try {
+    return JSON.parse(localStorage.getItem("juanlieOrderHistory") || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function saveOrderToHistory(data){
+  const history = getOrderHistory();
+
+  const order = {
+    number: pendingOrderNumber,
+    date: pendingOrderDate,
+    time: pendingOrderTime,
+    iso: pendingOrderISO,
+    name: data.get("nombre") || "",
+    product: data.get("producto") || "",
+    quantity: data.get("cantidad") || "",
+    city: data.get("ciudad") || "",
+    payment: data.get("pago") || ""
+  };
+
+  history.unshift(order);
+
+  // Keep only the last 10 orders on this device.
+  localStorage.setItem("juanlieOrderHistory", JSON.stringify(history.slice(0, 10)));
+  renderOrderHistory();
+}
+
+function renderOrderHistory(){
+  const list = document.getElementById("historyList");
+  if (!list) return;
+
+  const history = getOrderHistory();
+  list.innerHTML = "";
+
+  if (!history.length) {
+    const empty = document.createElement("div");
+    empty.className = "history-empty";
+    empty.textContent = "Todavía no hay pedidos guardados en este dispositivo.";
+    list.appendChild(empty);
+    return;
+  }
+
+  history.forEach(order => {
+    const item = document.createElement("div");
+    item.className = "history-item";
+
+    const top = document.createElement("div");
+    top.className = "history-top";
+
+    const number = document.createElement("span");
+    number.className = "history-number";
+    number.textContent = order.number;
+
+    const date = document.createElement("span");
+    date.className = "history-date";
+    date.textContent = (order.date || "") + " · " + (order.time || "");
+
+    top.appendChild(number);
+    top.appendChild(date);
+
+    const details = document.createElement("div");
+    details.className = "history-details";
+    details.textContent =
+      (order.product || "Producto no indicado") +
+      " · Cantidad: " + (order.quantity || "-") +
+      " · " + (order.payment || "Método no indicado") +
+      (order.city ? " · " + order.city : "");
+
+    item.appendChild(top);
+    item.appendChild(details);
+    list.appendChild(item);
+  });
+}
+
+function clearOrderHistory(){
+  localStorage.removeItem("juanlieOrderHistory");
+  renderOrderHistory();
+}
+
+document.addEventListener("DOMContentLoaded", renderOrderHistory);
+
+const paymentDetails = {
+  nequi: {
+    title: "NEQUI",
+    text: "Realiza el pago al número 3116467249.",
+    number: "3116467249",
+  },
+  daviplata: {
+    title: "DAVIPLATA",
+    text: "Realiza el pago al número 3116467249.",
+    number: "3116467249",
+  },
+  pse: {
+    title: "PSE",
+    text: "Aquí dejaremos preparada la información para conectar una pasarela de pago segura cuando definamos el proveedor.",
+  },
+  tarjeta: {
+    title: "TARJETA DE CRÉDITO",
+    text: "Aquí conectaremos posteriormente una pasarela segura. La página no almacenará datos de tarjeta.",
+  }
+};
+
+function showPayment(method){
+  const info = paymentDetails[method];
+  const box = document.getElementById("paymentInfo");
+  document.getElementById("paymentInfoTitle").textContent = info.title;
+  document.getElementById("paymentInfoText").textContent = info.text;
+
+  const action = document.getElementById("paymentInfoAction");
+  action.innerHTML = "";
+
+  if (info.number) {
+    const number = document.createElement("strong");
+    number.textContent = info.number;
+    number.style.cssText = "display:block;margin:14px 0;color:#e6c77f;font:22px Arial,sans-serif;letter-spacing:2px";
+    action.appendChild(number);
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "btn";
+    button.textContent = "COPIAR NÚMERO";
+    button.style.marginTop = "4px";
+    button.onclick = async function(){
+      try {
+        await navigator.clipboard.writeText(info.number);
+        button.textContent = "NÚMERO COPIADO ✓";
+        setTimeout(() => button.textContent = "COPIAR NÚMERO", 1800);
+      } catch {
+        button.textContent = info.number;
+      }
+    };
+    action.appendChild(button);
+  }
+
+  box.classList.add("open");
+  box.scrollIntoView({behavior:"smooth", block:"center"});
+}
+</script>
+</body>
+</html>
